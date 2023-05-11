@@ -17,15 +17,15 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* <HomeServices/>
-      <Contact/> */}
-      <Slider />
+      {/* <HomeServices/> */}
+      <Contact/>
+      {/* <Slider />
       <Sale />
       <Rent />
       <Buy />
       <Checkout/>
       <More />
-      <Partners />
+      <Partners /> */}
       <Footer />
       <ScrollToTop />
     </div>

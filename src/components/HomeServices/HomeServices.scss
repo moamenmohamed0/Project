@@ -1251,3 +1251,20 @@ textarea {
   white-space: nowrap;
   width: var(--btn-width)
 }
+.text-center {
+  text-align: center;
+}
+.multipleline-2,
+.multipleline-3 {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.multipleline-2 {
+  -webkit-line-clamp: 2;
+  height: 3em;
+}
+.font20{
+  font-size: 1rem;
+}

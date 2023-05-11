@@ -59,23 +59,17 @@ function Contact() {
 
 								                                    <div className="rh_contact__item">
                                         <div className="icon"></div>
-                                        <p className="content">
-                                            <span className="label">Phone</span><a href="tel:+123-456-789">+123-456-789                                            </a>
-                                        </p>
+                                        
                                     </div>
 								
 								                                    <div className="rh_contact__item">
                                         <div className="icon"></div>
-                                        <p className="content">
-                                            <span className="label">Mobile</span><a href="tel:+133-456-787">+133-456-787                                            </a>
-                                        </p>
+                                        
                                     </div>
 								
 								                                    <div className="rh_contact__item">
                                         <div className="icon"></div>
-                                        <p className="content">
-                                            <span className="label">Fax</span><a href="fax:+122-456-788">+122-456-788                                            </a>
-                                        </p>
+                                        
                                     </div>
 								
 								                                    <div className="rh_contact__item">

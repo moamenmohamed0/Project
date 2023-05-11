@@ -154,10 +154,6 @@ function Header() {
         <div className="h-user">
           <ul>
             <li>
-              <LocalPhoneIcon />
-              1-800-555-1234
-            </li>
-            <li>
               <AccountCircleIcon />
             </li>
             <li>
