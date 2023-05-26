@@ -11,8 +11,9 @@ import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Checkout from "./components/Checkout/Checkout";
 import HomeServices from "./components/HomeServices/HomeServices";
-import Contact from "./components/Contact/Contact"
-import Property from "./components/Property/Property"
+import Contact from "./components/Contact/Contact";
+import Property from "./components/Property/Property";
+import Search from "./components/Search/Search";
 import {
   BrowserRouter as Router,
   Switch,
@@ -26,7 +27,8 @@ function App() {
       <Router>
       <Header />
       {/* <HomeServices/> */}
-      <Property />
+      {/* <Property /> */}
+      <Search/>
       {/* <Contact/> */}
       {/* <Slider />
       <Sale />
