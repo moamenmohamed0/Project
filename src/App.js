@@ -12,13 +12,22 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import Checkout from "./components/Checkout/Checkout";
 import HomeServices from "./components/HomeServices/HomeServices";
 import Contact from "./components/Contact/Contact"
+import Property from "./components/Property/Property"
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation
+} from "react-router-dom"
 
 function App() {
   return (
     <div className="App">
+      <Router>
       <Header />
       {/* <HomeServices/> */}
-      <Contact/>
+      <Property />
+      {/* <Contact/> */}
       {/* <Slider />
       <Sale />
       <Rent />
@@ -28,6 +37,7 @@ function App() {
       <Partners /> */}
       <Footer />
       <ScrollToTop />
+      </Router>
     </div>
   );
 }
