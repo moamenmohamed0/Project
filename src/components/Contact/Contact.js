@@ -1,6 +1,42 @@
 import React from "react";
 import "./Contact.scss";
+import axios from 'axios'
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 function Contact() {
+  const [Name,setName] = useState("");
+  const [Email,setEmail] = useState('');
+  const [Phone,setPhone] = useState('');
+  const [Message,setMessage] = useState('');
+  var tokenStr = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NzFiMTBjMTI3MzJlNjdlZjZiZWU4NiIsImVtYWlsIjoiYWJkby5jb20iLCJsb2dvdXQiOmZhbHNlLCJpYXQiOjE2ODUxODA5MjksImV4cCI6MTY4NzYxODEyOX0.Vq1kU0jIjEeNhWRzWhy1bs4kcYHoW8fPbJuvokRE8NU";
+  const config =  { headers:{ 'content-type': 'application/json' ,"Authorization" : `Bearer ${tokenStr}`}};
+  const handleSubmit = () => {
+    console.log(Message);
+    axios.post(`http://localhost:5000/users/message`,{
+        name: Name,
+        email: Email,
+        telephone: Phone,
+        messages: Message
+    },config).then(
+        (res) => {
+            console.log(res)
+            Swal.fire({
+          title: "Add done successfully",
+          icon: "success",
+          confirmButtonText: "Ok",
+          }).then((result) => {
+            if (result.isConfirmed) {
+            } else if (result.isDenied) {
+              Swal.fire("Changes are not saved", "", "info");
+            }
+          });
+        }
+        )
+        .catch(err => {
+            console.log(err);
+        // some error handling
+        });
+  };
   return (
     <div>
         <section className="rh_section rh_wrap rh_wrap--padding rh_wrap--topPadding">
@@ -20,22 +56,22 @@ function Contact() {
                                             <form className="contact-form" method="post" action="https://modern.realhomes.io/wp-admin/admin-ajax.php" novalidate="novalidate">
                                                 <p className="rh_contact__input rh_contact__input_text">
                                                     <label for="name">Name</label>
-                                                    <input type="text" name="name" id="name" className="required" placeholder="Your Name" title="* Please provide your name"/>
+                                                    <input type="text" name="name" id="name" className="required" placeholder="Your Name" required title="* Please provide your name" onChange={(e) => setName(e.target.value)}/>
                                                 </p>
 
                                                 <p className="rh_contact__input rh_contact__input_text">
                                                     <label for="email">Email</label>
-                                                    <input type="text" name="email" id="email" className="email required" placeholder="Your Email" title="* Please provide a valid email address"/>
+                                                    <input type="text" name="email" id="email" className="email required" placeholder="Your Email" title="* Please provide a valid email address" required onChange={(e) => setEmail(e.target.value)}/>
                                                 </p>
 
                                                 <p className="rh_contact__input rh_contact__input_text">
                                                     <label for="number">Phone Number</label>
-                                                    <input type="text" name="number" id="number" placeholder="Your Phone"/>
+                                                    <input type="text" name="number" id="number" placeholder="Your Phone" required onChange={(e) => setPhone(e.target.value)}/>
                                                 </p>
 
                                                 <p className="rh_contact__input rh_contact__input_textarea">
                                                     <label for="message">Message</label>
-                                                    <textarea cols="40" rows="6" name="message" id="message" className="required" placeholder="Your Message" title="* Please provide your message"></textarea>
+                                                    <textarea cols="40" rows="6" name="message" id="message" className="required" placeholder="Your Message" title="* Please provide your message" onChange={(e) => setMessage(e.target.value)}></textarea>
                                                 </p>
 
 												<p className="rh_inspiry_gdpr clearfix"><span className="gdpr-checkbox-label">GDPR Agreement <span className="required-label">*</span></span><input type="checkbox" name="gdpr" id="inspiry-gdpr" className="required" value="I consent to having this website store my submitted information so they can respond to my inquiry." title="* Please accept GDPR agreement"/><label for="inspiry-gdpr">I consent to having this website store my submitted information so they can respond to my inquiry.</label></p>                                                        <div className="rh_contact__input rh_contact__input_recaptcha inspiry-recaptcha-wrapper clearfix g-recaptcha-type-v3">
@@ -43,7 +79,7 @@ function Contact() {
                                                         </div>
 														
                                                 <p className="rh_contact__input rh_contact__submit">
-                                                    <input type="submit" id="submit-button" value="Send Message" className="rh_btn rh_btn--primary" name="submit"/>
+                                                    <input type="submit" id="submit-button" onClick={handleSubmit} value="Send Message" className="rh_btn rh_btn--primary" name="submit"/>
                                                     <span id="ajax-loader"></span>
                                                     <input type="hidden" name="action" value="send_message"/>
                                                     <input type="hidden" name="the_id" value="155"/>

@@ -28,8 +28,8 @@ function App() {
       <Header />
       {/* <HomeServices/> */}
       {/* <Property /> */}
-      <Search/>
-      {/* <Contact/> */}
+      {/* <Search/> */}
+      <Contact/>
       {/* <Slider />
       <Sale />
       <Rent />
